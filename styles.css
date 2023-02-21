@@ -1,29 +1,38 @@
-h1, h2 {
- color: #254384;
-}
+ h1,
+ h2 {
+     color: #254384;
+ }
 
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 5px black;
-}
+ header {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     border: 5px black;
+ }
 
-#main {
-    display: flex;
-    flex-direction: row-reverse;
-}
+ #main {
+     display: flex;
+     flex-direction: row-reverse;
+ }
 
-#work-section {
-    display: flex;
-    padding-left: 15px;
-}
+ #work-section {
+     display: flex;
+     padding-left: 15px;
+ }
 
-#side-info {
-    display: flex;
-    flex-direction: column;
-    align-items: inherit;
-    flex: 1;
-    border-right: lightgray thin solid;
-    padding-right: 2px;
-}
+ #side-info {
+     display: flex;
+     flex-direction: column;
+     align-items: inherit;
+     flex: 1;
+     border-right: lightgray thin solid;
+     padding-right: 2px;
+ }
+
+ #contact h3 {
+    margin-bottom: 0;
+ }
+
+ #contact h4 {
+    margin-top: 0;
+ }
