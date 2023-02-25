@@ -1,20 +1,11 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.55.0"
-    }
-  }
-}
-
 module "template_files" {
   source   = "hashicorp/dir/template"
   version  = "1.0.2"
-  base_dir = "../../frontend/"
+  base_dir = "../../../frontend/"
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "cloudprofile.cloud"
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_acl" "bucket_acl" {
