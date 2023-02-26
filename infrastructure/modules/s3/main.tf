@@ -1,7 +1,7 @@
 module "template_files" {
   source   = "hashicorp/dir/template"
   version  = "1.0.2"
-  base_dir = "../../../frontend/"
+  base_dir = "../../../../frontend/"
 }
 
 resource "aws_s3_bucket" "bucket" {
