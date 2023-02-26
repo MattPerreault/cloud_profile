@@ -1,21 +1,19 @@
-locals {
-  s3_origin_id = "s3_website_origin"
-}
-
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name              = var.domain
     origin_access_control_id = aws_cloudfront_origin_access_control.cloudfront_oac.id
-    origin_id                = local.s3_origin_id
+    origin_id                = var.domain_name
   }
 
+  # This matches the route53 alias record for DNS
+  aliases = [var.domain_name]
   enabled             = true
   default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = var.domain_name
 
     forwarded_values {
       query_string = false
@@ -35,7 +33,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     path_pattern     = "/content/immutable/*"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = var.domain_name
 
     forwarded_values {
       query_string = false
@@ -58,7 +56,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     path_pattern     = "/content/"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = var.domain_name
 
     forwarded_values {
       query_string = false
