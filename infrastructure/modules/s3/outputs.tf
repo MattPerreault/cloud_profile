@@ -10,5 +10,5 @@ output "name" {
 
 output "domain" {
   description = "Domain name of the bucket"
-  value       = aws_s3_bucket_website_configuration.s3_website.website_domain
+  value       = aws_s3_bucket.bucket.bucket_regional_domain_name
 }

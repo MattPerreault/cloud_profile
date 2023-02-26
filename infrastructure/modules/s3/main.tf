@@ -53,11 +53,3 @@ resource "aws_s3_object" "static_files" {
   # MD5 hash of that object.
   etag = each.value.digests.md5
 }
-
-resource "aws_s3_bucket_website_configuration" "s3_website" {
-  bucket = aws_s3_bucket.bucket.id
-
-  index_document {
-    suffix = "index.html"
-  }
-}
