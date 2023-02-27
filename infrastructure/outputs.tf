@@ -23,3 +23,8 @@ output "cloudfront_domain" {
   value       = module.cloudfront_distribution.domain
 
 }
+
+output "route53_domain" {
+  description = "Domain of the route53 record"
+  value       = module.route53.route53_domain
+}
