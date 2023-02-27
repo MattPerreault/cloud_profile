@@ -6,7 +6,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   # This matches the route53 alias record for DNS
-  aliases = [var.domain_name]
+  aliases             = [var.domain_name]
   enabled             = true
   default_root_object = "index.html"
 
@@ -22,55 +22,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
-  }
-
-  # Cache behavior with precedence 0
-  ordered_cache_behavior {
-    path_pattern     = "/content/immutable/*"
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = var.domain_name
-
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
-    compress               = true
     viewer_protocol_policy = "redirect-to-https"
-  }
-
-  # Cache behavior with precedence 1
-  ordered_cache_behavior {
-    path_pattern     = "/content/"
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = var.domain_name
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
-
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-    compress               = true
-    viewer_protocol_policy = "redirect-to-https"
   }
 
   restrictions {
@@ -81,8 +36,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = var.cert_arn
+    ssl_support_method  = "sni-only"
   }
+
 }
 
 resource "aws_cloudfront_origin_access_control" "cloudfront_oac" {

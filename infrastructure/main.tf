@@ -6,12 +6,13 @@ module "s3_origin" {
 module "cloudfront_distribution" {
   source      = "./modules/cloudfront"
   domain      = module.s3_origin.domain
-  domain_name = module.s3_origin.name
+  domain_name = "mpcloudstack.com"
+  cert_arn    = module.route53.cert_arn
 }
 
 module "route53" {
   source                       = "./modules/route53"
-  domain                       = module.s3_origin.name
+  domain                       = "mpcloudstack.com"
   cf_distribution_domain       = module.cloudfront_distribution.domain
   cf_distribution_host_zone_id = module.cloudfront_distribution.hosted_zone
 }
