@@ -16,3 +16,9 @@ module "route53" {
   cf_distribution_domain       = module.cloudfront_distribution.domain
   cf_distribution_host_zone_id = module.cloudfront_distribution.hosted_zone
 }
+
+module "api" {
+  source      = "./modules/api"
+  source_dir  = "${path.module}/../backend/"
+  output_path = "${path.module}/../backend/lambda_handler.zip"
+}
