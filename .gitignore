@@ -11,3 +11,6 @@
 # to change depending on the environment.
 *.tfvars
 *.tfvars.json
+
+# lambda archive file
+*lambda_handler.zip
