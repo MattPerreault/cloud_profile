@@ -28,3 +28,12 @@ output "route53_domain" {
   description = "Domain of the route53 record"
   value       = module.route53.route53_domain
 }
+
+output "lambda_name" {
+  description = "Name of the lambda function"
+  value       = module.lambda.function_name
+}
+output "rest_api_url" {
+  description = "URL of the API"
+  value       = module.api.rest_api_url
+}
