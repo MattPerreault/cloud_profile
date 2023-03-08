@@ -1,64 +1,60 @@
-data "archive_file" "lambda_handler" {
-  type        = "zip"
-  source_dir  = var.source_dir
-  output_path = var.output_path
+resource "aws_api_gateway_rest_api" "api" {
+  name        = var.rest_api_name
+  description = "This is an API to get and update the number of views my profile has"
 }
 
-resource "aws_s3_bucket" "mpcloudstack_lambda_bucket" {
-  bucket = "mpcloudstack-lambda-bucket"
+resource "aws_api_gateway_resource" "rest_api_resource" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  parent_id   = aws_api_gateway_rest_api.api.root_resource_id
+  path_part   = "views"
 }
 
-resource "aws_s3_bucket_acl" "bucket_acl" {
-  bucket = aws_s3_bucket.mpcloudstack_lambda_bucket.id
-  acl    = "private"
+resource "aws_api_gateway_method" "get" {
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  resource_id   = aws_api_gateway_resource.rest_api_resource.id
+  authorization = "NONE"
+  http_method   = "GET"
 }
 
-resource "aws_s3_object" "lambda_handler" {
-  bucket = aws_s3_bucket.mpcloudstack_lambda_bucket.id
-
-  key    = "lambda_handler.zip"
-  source = data.archive_file.lambda_handler.output_path
-  etag   = filemd5(data.archive_file.lambda_handler.output_path)
+resource "aws_api_gateway_integration" "get_integration" {
+  rest_api_id             = aws_api_gateway_rest_api.api.id
+  resource_id             = aws_api_gateway_resource.rest_api_resource.id
+  http_method             = aws_api_gateway_method.get.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = var.lambda_get_handler_arn
 }
 
-resource "aws_lambda_function" "site_counter" {
-  function_name = "site_counter"
-
-  s3_bucket = aws_s3_bucket.mpcloudstack_lambda_bucket.id
-  s3_key    = aws_s3_object.lambda_handler.key
-
-  runtime = "python3.9"
-  handler = "lambda_handler.lambda_handler"
-
-  source_code_hash = data.archive_file.lambda_handler.output_base64sha256
-
-  role = aws_iam_role.lambda_exec.arn
+resource "aws_api_gateway_method_response" "get_response_200" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  resource_id = aws_api_gateway_resource.rest_api_resource.id
+  http_method = aws_api_gateway_method.get.http_method
+  status_code = "200"
 }
 
-resource "aws_cloudwatch_log_group" "site_counter_log_group" {
-  name = "/aws/lambda/${aws_lambda_function.site_counter.function_name}"
+resource "aws_lambda_permission" "api_gw_lambda" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = var.lambda_get_handler
+  principal     = "apigateway.amazonaws.com"
 
-  retention_in_days = 1
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+  source_arn = "arn:aws:execute-api:${var.region}:${var.account_id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.get.http_method}${aws_api_gateway_resource.rest_api_resource.path}"
 }
 
-resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Action = "sts:AssumeRole"
-      Effect = "Allow"
-      Sid    = ""
-      Principal = {
-        Service = "lambda.amazonaws.com"
-      }
-    }]
-  })
+resource "aws_api_gateway_deployment" "deployment" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.rest_api_resource.id,
+      aws_api_gateway_method.get.id,
+      aws_api_gateway_integration.get_integration.id,
+    ]))
+  }
 }
 
-
-resource "aws_iam_role_policy_attachment" "lambda_policy_attach" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+resource "aws_api_gateway_stage" "prod_stage" {
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  stage_name    = var.rest_api_stage_name
 }
