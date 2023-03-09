@@ -37,3 +37,8 @@ output "rest_api_url" {
   description = "URL of the API"
   value       = module.api.rest_api_url
 }
+
+output "dynamo_db_arn" {
+  description = "ARN of dynamo db table"
+  value       = module.dynamo.dynamo_arn
+}

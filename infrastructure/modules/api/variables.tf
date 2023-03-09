@@ -4,7 +4,7 @@ variable "region" {
 }
 
 variable "account_id" {
-  type     = string
+  type        = string
   description = "Account ID API Gateway belongs to"
 }
 

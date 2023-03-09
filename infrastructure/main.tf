@@ -21,6 +21,10 @@ module "lambda" {
   source      = "./modules/lambda"
   source_dir  = "${path.module}/../backend/"
   output_path = "${path.module}/../backend/lambda_handler.zip"
+  dynamo_arn  = module.dynamo.dynamo_arn
+  depends_on = [
+    module.dynamo.table
+  ]
 }
 
 data "aws_caller_identity" "current" {}
@@ -34,4 +38,8 @@ module "api" {
   depends_on = [
     module.lambda.function
   ]
+}
+
+module "dynamo" {
+  source = "./modules/dynamo"
 }
