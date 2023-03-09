@@ -8,7 +8,8 @@ Current Stack:
 - <b>Route53</b> to manage DNS records
 - <b>ACM</b> to create and manage SSL certs.
 - <b> API Gateway </b> used to serve view counts for my profile
-- <b> Lambda </b> used as a handler for the API responses. 
+- <b> Lambda </b> used as a handler for the API responses.
+- <b> DynamoDB </b> to manage site statistics. 
 - All infrastructure is managed by <b>Terraform</b>
 
 View my site! https://mpcloudstack.com
