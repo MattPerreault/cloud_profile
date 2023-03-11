@@ -20,7 +20,7 @@ module "route53" {
 module "lambda" {
   source      = "./modules/lambda"
   source_dir  = "${path.module}/../backend/"
-  output_path = "${path.module}/../backend/lambda_handler.zip"
+  output_path = "${path.module}/../backend/lambda_get_handler.zip"
   dynamo_arn  = module.dynamo.dynamo_arn
   depends_on = [
     module.dynamo.table

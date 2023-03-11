@@ -13,4 +13,4 @@
 *.tfvars.json
 
 # lambda archive file
-*lambda_handler.zip
+*lambda_get_handler.zip
