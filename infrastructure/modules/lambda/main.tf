@@ -16,7 +16,7 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
 resource "aws_s3_object" "lambda_handler" {
   bucket = aws_s3_bucket.mpcloudstack_lambda_bucket.id
 
-  key    = "lambda_handler.zip"
+  key    = "lambda_get_handler.zip"
   source = data.archive_file.lambda_handler.output_path
   etag   = filemd5(data.archive_file.lambda_handler.output_path)
 }
@@ -28,7 +28,7 @@ resource "aws_lambda_function" "site_counter" {
   s3_key    = aws_s3_object.lambda_handler.key
 
   runtime = "python3.9"
-  handler = "lambda_handler.lambda_handler"
+  handler = "lambda_get_handler.lambda_get_handler"
 
   source_code_hash = data.archive_file.lambda_handler.output_base64sha256
 

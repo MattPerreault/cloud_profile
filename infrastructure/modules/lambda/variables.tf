@@ -1,5 +1,5 @@
 variable "source_dir" {
-  description = "Path to labmda archive directory"
+  description = "Path to lambda archive directory"
   type        = string
 }
 
