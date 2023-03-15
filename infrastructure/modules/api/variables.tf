@@ -29,3 +29,13 @@ variable "lambda_get_handler_arn" {
   type        = string
   description = "The ARN of the API GET lambda function"
 }
+
+variable "lambda_put_handler" {
+  type        = string
+  description = "The name of the API PUT lambda function"
+}
+
+variable "lambda_put_handler_arn" {
+  type        = string
+  description = "The ARN of the API PUT lambda function"
+}
