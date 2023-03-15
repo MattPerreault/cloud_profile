@@ -29,10 +29,16 @@ output "route53_domain" {
   value       = module.route53.route53_domain
 }
 
-output "lambda_name" {
-  description = "Name of the lambda function"
-  value       = module.lambda.function_name
+output "lambda_get_name" {
+  description = "Name of the lambda get function"
+  value       = module.lambda.get_function_name
 }
+
+output "lambda_put_name" {
+  description = "Name of the lambda put function"
+  value       = module.lambda.put_function_name
+}
+
 output "rest_api_url" {
   description = "URL of the API"
   value       = module.api.rest_api_url

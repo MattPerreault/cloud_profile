@@ -16,6 +16,13 @@ resource "aws_api_gateway_method" "get" {
   http_method   = "GET"
 }
 
+resource "aws_api_gateway_method" "put" {
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  resource_id   = aws_api_gateway_resource.rest_api_resource.id
+  authorization = "NONE"
+  http_method   = "PUT"
+}
+
 resource "aws_api_gateway_integration" "get_integration" {
   rest_api_id             = aws_api_gateway_rest_api.api.id
   resource_id             = aws_api_gateway_resource.rest_api_resource.id
@@ -25,10 +32,26 @@ resource "aws_api_gateway_integration" "get_integration" {
   uri                     = var.lambda_get_handler_arn
 }
 
+resource "aws_api_gateway_integration" "put_integration" {
+  rest_api_id             = aws_api_gateway_rest_api.api.id
+  resource_id             = aws_api_gateway_resource.rest_api_resource.id
+  http_method             = aws_api_gateway_method.put.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = var.lambda_put_handler_arn
+}
+
 resource "aws_api_gateway_method_response" "get_response_200" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   resource_id = aws_api_gateway_resource.rest_api_resource.id
   http_method = aws_api_gateway_method.get.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_method_response" "put_response_200" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  resource_id = aws_api_gateway_resource.rest_api_resource.id
+  http_method = aws_api_gateway_method.put.http_method
   status_code = "200"
 }
 
@@ -42,13 +65,23 @@ resource "aws_lambda_permission" "api_gw_lambda" {
   source_arn = "arn:aws:execute-api:${var.region}:${var.account_id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.get.http_method}${aws_api_gateway_resource.rest_api_resource.path}"
 }
 
+resource "aws_lambda_permission" "api_gw_put_lambda" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = var.lambda_put_handler
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "arn:aws:execute-api:${var.region}:${var.account_id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.put.http_method}${aws_api_gateway_resource.rest_api_resource.path}"
+}
+
 resource "aws_api_gateway_deployment" "deployment" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   triggers = {
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.rest_api_resource.id,
       aws_api_gateway_method.get.id,
+      aws_api_gateway_method.put.id,
       aws_api_gateway_integration.get_integration.id,
+      aws_api_gateway_integration.put_integration.id,
     ]))
   }
 }
