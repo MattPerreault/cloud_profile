@@ -101,7 +101,7 @@ resource "aws_iam_policy" "dynamo_access_policy" {
         Effect = "Allow"
         Action = [
           "dynamodb:GetItem",
-          "dynamodb:PutItem"
+          "dynamodb:UpdateItem"
         ]
         Resource = [
           var.dynamo_arn
