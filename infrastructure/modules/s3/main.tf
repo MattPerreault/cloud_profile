@@ -1,11 +1,10 @@
-module "template_files" {
-  source   = "hashicorp/dir/template"
-  version  = "1.0.2"
-  base_dir = "../../../../frontend/"
-}
-
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
+
+  website {
+    index_document = "index.html"
+    error_document = "404.html"
+  }
 }
 
 resource "aws_s3_bucket_acl" "bucket_acl" {
@@ -36,20 +35,20 @@ data "aws_iam_policy_document" "allow_public_read_access" {
   }
 }
 
-resource "aws_s3_object" "static_files" {
-  for_each = module.template_files.files
+resource "aws_s3_object" "html" {
+  for_each = fileset("../../../frontend/public/", "**/*.html")
 
-  bucket       = aws_s3_bucket.bucket.bucket
-  key          = each.key
-  content_type = each.value.content_type
+  bucket = aws_s3_bucket.bucket.bucket
+  key    = each.value
 
-  # The template_files module guarantees that only one of these two attributes
-  # will be set for each file, depending on whether it is an in-memory template
-  # rendering result or a static file on disk.
-  source  = each.value.source_path
-  content = each.value.content
+  source       = "../../../frontend/public/${each.value}"
+  content_type = "text/html"
 
   # Unless the bucket has encryption enabled, the ETag of each object is an
   # MD5 hash of that object.
-  etag = each.value.digests.md5
+  etag = filemd5("../../../frontend/public/${each.value}")
+}
+
+output "fileset-results" {
+  value = fileset("../../frontend/public/", "**/*")
 }

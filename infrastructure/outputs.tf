@@ -13,6 +13,11 @@ output "s3_origin_domain" {
   value       = module.s3_origin.domain
 }
 
+output "s3_fileset" {
+  description = "Files uploaded to s3"
+  value       = module.s3_origin.fileset-results
+}
+
 output "cloudfront_arn" {
   description = "ARN of the cloudfront distribution"
   value       = module.cloudfront_distribution.arn

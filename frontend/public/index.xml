@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mpcloudstack</title>
+    <link>http://mpcloudstack.com/</link>
+    <description>Recent content on mpcloudstack</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://mpcloudstack.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coming Soon</title>
+      <link>http://mpcloudstack.com/posts/coming-soon/</link>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://mpcloudstack.com/posts/coming-soon/</guid>
+      <description>Blog posts coming soon! I have so many ideas that I am still debating on how I want to lay everything out. Stay tuned!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://mpcloudstack.com/about/</link>
+      <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://mpcloudstack.com/about/</guid>
+      <description>I am a Denver based software engineer who enjoys working on and improving distributed systems. I have worked all over the stack, from full-stack product development to standing up a cloud native data management and processing system. I have had the pleassure to work with cutting edge cloud tools like AWS Redshift, Kinesis, Glue and more! I have been on green field projects, most recently implementing a cloud-native CI/CD solution powered by Argo.</description>
+    </item>
+    
+  </channel>
+</rss>
