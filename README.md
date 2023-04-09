@@ -2,7 +2,7 @@
 A cloud native stack to host my stuff
 
 Current Stack:
-- HTML/CSS static website
+- HTML/CSS static website using [Hugo](https://themes.gohugo.io/) as the site generator 
 - <b>S3</b> bucket hosting the site
 - <b>Cloudfront distribution</b> fronting my <b>S3 origin</b> to serve with SSL/TLS and Cloudfront edge locations for speed.
 - <b>Route53</b> to manage DNS records
