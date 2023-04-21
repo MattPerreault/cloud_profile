@@ -1,5 +1,5 @@
 # cloud_profile
-A cloud native stack to host my stuff
+A cloud native stack to host my blog "Know Your Systems."
 
 Current Stack:
 - HTML/CSS static website using [Hugo](https://themes.gohugo.io/) as the site generator 
@@ -13,5 +13,3 @@ Current Stack:
 - All infrastructure is managed by <b>Terraform</b>
 
 View my site! https://mpcloudstack.com
-
-TODO: Create documention to show data flow and cloud resource communication. Reference Issue https://github.com/MattPerreault/cloud_profile/issues/15
