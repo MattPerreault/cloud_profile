@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  An Agile Approach to Software Infrastructure · mpcloudstack
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Matt Perreault">
+<meta name="description" content="Taking an agile approach to software infrastructure.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="An Agile Approach to Software Infrastructure"/>
+<meta name="twitter:description" content="Taking an agile approach to software infrastructure."/>
+
+<meta property="og:title" content="An Agile Approach to Software Infrastructure" />
+<meta property="og:description" content="Taking an agile approach to software infrastructure." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mpcloudstack.com/posts/agile-approach-to-infrastructure/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-25T00:00:00+00:00" />
+
+
+
+
+
+<link rel="canonical" href="http://mpcloudstack.com/posts/agile-approach-to-infrastructure/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.65236a6d834b26194eed04a2a3b45e44d9194ef9e620253705d4bef03bd7ef81.css" integrity="sha256-ZSNqbYNLJhlO7QSio7ReRNkZTvnmICU3BdS&#43;8DvX74E=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.f6534b0b446b75d9b6ad77a97d43ede2ddaeff1b6e2361fb7198d6f8fcb7f83f.css" integrity="sha256-9lNLC0Rrddm2rXepfUPt4t2u/xtuI2H7cZjW&#43;Py3&#43;D8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      mpcloudstack
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://mpcloudstack.com/posts/agile-approach-to-infrastructure/">
+              An Agile Approach to Software Infrastructure
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-04-25T00:00:00Z">
+                April 25, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>When I decided to undertake this project, I was heavily influenced by the <a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/"  class="external-link" target="_blank" rel="noopener">Cloud Resume Challenge</a>. As someone who is not very creative, this gave me a great starting point. Something that I wanted to conform to from the beginning were the Agile principles. I think I hit the mark pretty well so far. I am going to attempt to explain how I took an iterative approach to building out this project to deliver working software at each step of the process.</p>
+<p>The first tenet that I set out to achieve was to get something working quickly. Admittedly, it wasn&rsquo;t pretty, but the first iteration rarely is. Since I was using the Cloud Resume Challenge as a template, I ported my resume from a PDF to some basic <a href="https://github.com/MattPerreault/cloud_profile/pull/12"  class="external-link" target="_blank" rel="noopener">HTML and CSS</a>. It took longer than I am proud to admit. However, the benefit of being the customer, I was pretty delighted once I got it in a decent place. What is important here is that I started. I got my repository set up in Github, I set up my <a href="https://github.com/users/MattPerreault/projects/1"  class="external-link" target="_blank" rel="noopener">project</a>, and started creating a roadmap. Once you are able to make that first effort to get something going, the momentum will drive you forward. That is what this simple project of creating an HTML version of my resume did for me.</p>
+<p>Now that I had something to host, I could turn to what I really enjoy doing, setting up my cloud infrastructure. I decided to work with <a href="https://www.terraform.io/"  class="external-link" target="_blank" rel="noopener">Terraform</a> over <a href="https://aws.amazon.com/cloudformation/"  class="external-link" target="_blank" rel="noopener">CloudFormation</a> for my Infrastructure as Code (IaC) software tool to provision and manage my AWS cloud resources. Terraform is ubiquitous throughout the industry. In my opinion, it is easier to read, and I find that testing, formatting, and building my plans with Terraform comes much more naturally than working with CloudFormation. Terraform <a href="https://developer.hashicorp.com/terraform/language/modules"  class="external-link" target="_blank" rel="noopener">modules</a> are powerful and intuitive for someone used to writing object-oriented code.</p>
+<p>Keeping in mind the Agile methodologies, I did not go out and stand up all of my resources right away. I made sure to set up only the resources I needed to get the feature delivered and tested. My first resources were around hosting as simple as possible my resume. To do this, I provisioned an S3 bucket as a website, set up a simple IAM policy and access control list. I uploaded my two static files, and BAM! I had my site open to the public. This enabled me to deliver working software quickly, identify any bugs or issues right away because I did not attempt to stand up too much at once, and I got that awesome feeling of seeing my work pay off. I tracked that work with project tickets and a <a href="https://github.com/MattPerreault/cloud_profile/pull/13"  class="external-link" target="_blank" rel="noopener">pull request</a>.</p>
+<p>If you have ever worked on a team that managed some cloud resources without tracking their work, you know it can be mayhem. Just because we can do everything through the AWS console does not mean that we should. It makes tracking changes difficult, it silos work from other team members, there is no version control of what was done, what didn&rsquo;t work, and what did. It strays away from the industry standard of maintaining operational excellence. In my opinion, it takes away from the joy of writing code and honing the craft of delivering quality software.</p>
+<p>I&rsquo;m not going to go over each and every feature that I created and delivered. If you want that sort of granularity, you can view my project and merged PRs. That&rsquo;s the beauty of version control and project management! What I wanted to focus on next is the evolution the project took as I was nearing the end of the Cloud Resume roadmap. Something beautiful started to happen. I found myself creating tickets for hardening my testing posture, looking at Github actions for my CI/CD system. And what&rsquo;s more, it was more than just a place to host my resume, but a full-scale cloud-native site that I can proudly call my own.</p>
+<p>The software landscape changes frequently, but the tried and true methodologies remain unchanged. Be consistent in the delivery cadence and flexible in the requirements. As your system matures, so will your project roadmap. Through continuous delivery and improvement, you and your team will stay motivated throughout the lifetime of the project. Make sure to track your progress through projects and tickets. As an infrastructure engineer, you may not be developing API endpoints or writing feature code every day, but you still need to maintain technical excellence. Leverage tools such as Terraform and Git to track all your changes. You&rsquo;ll thank me later when you&rsquo;re on support rotation. Finally, enjoy the process. Learning new systems can be overwhelming, but as the Stoics like to remind us, we grow through adversity. &ldquo;Just as nature takes every obstacle, every impediment, and works around it—turns it to its purposes, incorporates it into itself—so, too, a rational being can turn each setback into raw material and use it to achieve its goal.&quot;—Marcus Aurelius, Meditations.&rdquo;</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2023
+     Matt Perreault 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.369d90111ae4409b4e51de5efd23a46b92663fcc82dc9a0efde7f70bffc3f949.js" integrity="sha256-Np2QERrkQJtOUd5e/SOka5JmP8yC3JoO/ef3C//D&#43;Uk="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
