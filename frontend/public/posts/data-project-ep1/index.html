@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Data Roots Ep.1 · mpcloudstack
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Matt Perreault">
+<meta name="description" content="Custom data stack for Colorado Avalanche Data">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Roots Ep.1"/>
+<meta name="twitter:description" content="Custom data stack for Colorado Avalanche Data"/>
+
+<meta property="og:title" content="Data Roots Ep.1" />
+<meta property="og:description" content="Custom data stack for Colorado Avalanche Data" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mpcloudstack.com/posts/data-project-ep1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-12T00:00:00+00:00" />
+
+
+
+
+
+<link rel="canonical" href="http://mpcloudstack.com/posts/data-project-ep1/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.65236a6d834b26194eed04a2a3b45e44d9194ef9e620253705d4bef03bd7ef81.css" integrity="sha256-ZSNqbYNLJhlO7QSio7ReRNkZTvnmICU3BdS&#43;8DvX74E=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.f6534b0b446b75d9b6ad77a97d43ede2ddaeff1b6e2361fb7198d6f8fcb7f83f.css" integrity="sha256-9lNLC0Rrddm2rXepfUPt4t2u/xtuI2H7cZjW&#43;Py3&#43;D8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      mpcloudstack
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://mpcloudstack.com/posts/data-project-ep1/">
+              Data Roots Ep.1
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-11-12T00:00:00Z">
+                November 12, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h3 id="custom-data-stack-for-colorado-avalanche-statistics-ep1">
+  Custom Data Stack for Colorado Avalanche Statistics Ep.1
+  <a class="heading-link" href="#custom-data-stack-for-colorado-avalanche-statistics-ep1">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>It has been some time since I have written a post! This go around of Know Your Systems I will discuss a &ldquo;passion&rdquo; project of sorts. I think it is always nice to know a person&rsquo;s motivation for writing on a particular topic. For me I have recently accepted a position at <a href="https://realkinetic.com/"  class="external-link" target="_blank" rel="noopener">RealKinetic</a> and I will be going back to my data roots! I am very excited to be helping out customers meet their data management goals. I figured this would be a good time to circle back to my own data project I started a couple of years ago and have since shelved. So let&rsquo;s dig into what I have built and where I would like to steer this project.</p>
+<h3 id="colorado-avalanche-data-processing-framework">
+  Colorado Avalanche Data Processing Framework
+  <a class="heading-link" href="#colorado-avalanche-data-processing-framework">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h5 id="motivation">
+  Motivation
+  <a class="heading-link" href="#motivation">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<p>A few years back when I was a full-time data engineer I had a spark of motivation to create my own data processing framework for my favorite hockey team the Colorado Avalanche. You can view the project on <a href="https://github.com/MattPerreault/colorado_avalanche_etl"  class="external-link" target="_blank" rel="noopener">github</a>.The initial idea was for me to gather player statistics for both active and prospective players. This data was going to be used to power a few dashboards and eventually a website or mobile app that I could reference whenever I wanted.</p>
+<h5 id="data-spelunking">
+  Data Spelunking
+  <a class="heading-link" href="#data-spelunking">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<p>The first step in any data project is to verify that you can get at the necessary data to answer the questions you are seeking. I went to work attempting to locate any reasonable APIs or other data sources that had up-to-date hockey and in particular Avalanche statistics. It was a pleasant to find other tech nerds out there who are also hockey fans(<a href="https://www.kevinsidwar.com/iot/2017/9/17/internet-of-hockey-things/"  class="external-link" target="_blank" rel="noopener">1</a> )! I was able to come across the public NHL API. Unfortunately they did not have any public facing documentation. However, I was able to come across a few repositories online that <em>did</em> document the API (<a href="https://gitlab.com/dword4/nhlapi"  class="external-link" target="_blank" rel="noopener">1</a>,<a href="https://github.com/erunion/sport-api-specifications"  class="external-link" target="_blank" rel="noopener">2</a>,<a href="https://www.kevinsidwar.com/iot/2017/7/1/the-undocumented-nhl-stats-api/"  class="external-link" target="_blank" rel="noopener">3</a>).</p>
+<p>Finding the API was the first step, I needed to inspect the data and see if I could work with it. with a simple <code>curl</code> command I was able to verify the data was accessible.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="font-weight:bold">&lt;details&gt;</span>
+  <span style="font-weight:bold">&lt;summary&gt;</span>
+    curl https://statsapi.web.nhl.com/api/v1/teams/21
+  <span style="font-weight:bold">&lt;/summary&gt;</span>
+  {
+  &#34;copyright&#34; : &#34;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2023. All Rights Reserved.&#34;,
+  &#34;teams&#34; : [ {
+    &#34;id&#34; : 21,
+    &#34;name&#34; : &#34;Colorado Avalanche&#34;,
+    &#34;link&#34; : &#34;/api/v1/teams/21&#34;,
+    &#34;venue&#34; : {
+      &#34;id&#34; : 5064,
+      &#34;name&#34; : &#34;Ball Arena&#34;,
+      &#34;link&#34; : &#34;/api/v1/venues/5064&#34;,
+      &#34;city&#34; : &#34;Denver&#34;,
+      &#34;timeZone&#34; : {
+        &#34;id&#34; : &#34;America/Denver&#34;,
+        &#34;offset&#34; : -6,
+        &#34;tz&#34; : &#34;MDT&#34;
+      }
+    },
+    &#34;abbreviation&#34; : &#34;COL&#34;,
+    &#34;teamName&#34; : &#34;Avalanche&#34;,
+    &#34;locationName&#34; : &#34;Colorado&#34;,
+    &#34;firstYearOfPlay&#34; : &#34;1979&#34;,
+    &#34;division&#34; : {
+      &#34;id&#34; : 16,
+      &#34;name&#34; : &#34;Central&#34;,
+      &#34;nameShort&#34; : &#34;CEN&#34;,
+      &#34;link&#34; : &#34;/api/v1/divisions/16&#34;,
+      &#34;abbreviation&#34; : &#34;C&#34;
+    },
+    &#34;conference&#34; : {
+      &#34;id&#34; : 5,
+      &#34;name&#34; : &#34;Western&#34;,
+      &#34;link&#34; : &#34;/api/v1/conferences/5&#34;
+    },
+    &#34;franchise&#34; : {
+      &#34;franchiseId&#34; : 27,
+      &#34;teamName&#34; : &#34;Avalanche&#34;,
+      &#34;link&#34; : &#34;/api/v1/franchises/27&#34;
+    },
+    &#34;shortName&#34; : &#34;Colorado&#34;,
+    &#34;officialSiteUrl&#34; : &#34;http://www.coloradoavalanche.com/&#34;,
+    &#34;franchiseId&#34; : 27,
+    &#34;active&#34; : true
+  } ]
+}
+<span style="font-weight:bold">&lt;/details&gt;</span>
+</code></pre></div><p>Now that I knew I had a valid API to play with it was time to investigate the data and see what I could come up with. To my pleasure I found that I had access to single single stats, regular season stats, roster details and individual players. This was a goldmine! Now how to model all of this data..</p>
+<h5 id="data-modeling">
+  Data Modeling
+  <a class="heading-link" href="#data-modeling">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<p>One of the most important aspects of this project is to get the data model correct. Having a logical data model from the beginning will help drive the dashboards and UI for my needs. Since I was already working with a data set that had a well established model, i.e. each team has a unique id and each player has a unique id, I decided as a first pass to mimic what was available. That is, I created a table for each of the initial endpoints I was going to work with, team info, team stats, team roster, play stats for a single season. I was going to start small and grow my data set over time. This would allow me to understand how to work with the data and make sure that my infrastructure could handle it.</p>
+<h5 id="elt">
+  ELT
+  <a class="heading-link" href="#elt">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<p>Now that I had a source of data and I have a good model to work with I needed to start writing an ELT pipeline. For my first pass at an ELT pipeline, yes ELT not ETL, I decided to keep things as simple as possible. I pulled in the raw data for each of my main tables. I applied some more &ldquo;business logic&rdquo; to make inserting into my db easier and only add the data that I wanted, there are tons of data points that are not needed for this project.</p>
+<p>I stood up a local Postgres DB to write to and verify that my tables looked good.</p>
+<p>Architecture Diagram:
+<img src="/images/current-architecture.png" alt="Current Architecture"></p>
+<h5 id="kiss-methodology">
+  K.I.S.S. Methodology
+  <a class="heading-link" href="#kiss-methodology">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
+<p>Keep it simple, stupid! This is the framework from which I always ask myself when tackling a new project. Keep things as simple as possible at first and then let them grow over time. Right now ,you can see this is a very simple project. However, that doesn&rsquo;t mean I can&rsquo;t have fun with it and grow it as I see fit. For one I would like to set up some sort of orchestration tool to let it pull in data on a weekly basis to get my stats each week. I would also like I be able to run it ad-hoc. There are a few tools worth noting, <a href="https://dagster.io/"  class="external-link" target="_blank" rel="noopener">dagster</a>is one, however I will most likely be going with <a href="https://airflow.apache.org/"  class="external-link" target="_blank" rel="noopener">airflow</a> in order to get more hands on for a tool I will working with quite a lot in my day to day. Eventually I may go with some sort of managed DB instead of my local Postgres instance running in a Docker image locally. For now ,my data model is very simple consisting of only a few tables because K.I.S.S! As I get access to more stats tables this will have to evolve as well to make sure it is coherent and scales nicely. I have been playing around with <a href="https://beam.apache.org/"  class="external-link" target="_blank" rel="noopener">Apache Beam</a> lately because, <a href="https://cloud.google.com/dataflow?hl=en"  class="external-link" target="_blank" rel="noopener">Dataflow</a>. I was thinking It would be fun to port my python code over to some Beam pipelines. Finally, the UI, this is a piece that I am still very much in the air about. Right now, I will be most likely targeting a simple dashboard solution to which I have very little experience. My data engineering career has been 100% building pipelines, managing the cloud infrastructure those pipelines run on, and building data warehouses/lakes for this data to live. Dashboarding has always been me working with an analyst to verify the data was accurate. This will be a fun learning experience and will most likely warrant a blog post of its own.</p>
+<p>For now I think this was a pretty solid start and a great place to hop back into my happy plac of writing software, working with data and hockey! I&rsquo;m looking forward to building this out and looking for any feedback along the way!</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2023
+     Matt Perreault 
+    ·
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.369d90111ae4409b4e51de5efd23a46b92663fcc82dc9a0efde7f70bffc3f949.js" integrity="sha256-Np2QERrkQJtOUd5e/SOka5JmP8yC3JoO/ef3C//D&#43;Uk="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
